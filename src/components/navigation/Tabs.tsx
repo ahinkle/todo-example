@@ -17,7 +17,7 @@ const Tabs = ({ children }: TabProps) => {
 
     return (
       <div className='w-full'>
-        <div className="hidden sm:block bg-white rounded-lg px-4 pt-4 border">
+        <div className="bg-white rounded-lg px-4 pt-4 border">
             <nav className="-mb-px flex space-x-8" aria-label="Tabs">
                 {Children.map(children, (child: any, index: number) => {
                     if (isValidElement<TabProps>(child)) {

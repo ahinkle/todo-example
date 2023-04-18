@@ -9,7 +9,7 @@ interface TaskProps  {
 }
 
 const TaskItem: React.FC<TaskProps> = ({ task, handleTaskDelete, handleToggleTaskCompletion }) => {
-  const [css, setCss] = useState('opacity-0')
+  const [css, setCss] = useState('opacity-0 translate-y-6')
 
   useEffect (() => {
     setTimeout(() => {
@@ -20,7 +20,7 @@ const TaskItem: React.FC<TaskProps> = ({ task, handleTaskDelete, handleToggleTas
   }, [task])
 
   return (
-    <div className={'flex flex-col w-full translate-y-6 transform transition duration-300 ease-in-out ' + css}>
+    <div className={'flex flex-col w-full transform transition duration-300 ease-in-out ' + css}>
       <div className="relative flex items-start border-b py-3">
         <div className="flex w-full">
           <div className="flex h-6 items-center">

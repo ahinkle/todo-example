@@ -21,8 +21,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen p-24 bg-gray-100">
-
+    <main className="min-h-screen p-4 lg:p-24 bg-gray-100">
       <h1 className="text-4xl lg:text-6xl text-center pb-5 uppercase bg-clip-text bg-gradient-to-r from-indigo-300 to-indigo-800 font-extrabold text-transparent">
         My TODOs
       </h1>
@@ -37,26 +36,12 @@ export default function Home() {
           />
         </div>
 
-        <Tabs>
-          <Tab label="All">
-            <TaskList
-              name="Tasks"
-              tasks={tasks}
-              handleTaskDelete={(id: string) => {
-                deleteTask(id)
-                refreshTasks()
-              }}
-              handleToggleTaskCompletion={(id: string) => {
-                toggleTaskCompletion(id)
-                refreshTasks()
-              }}
-            />
-          </Tab>
-          <Tab label="Remaining">
-            <div className="flex flex-col">
+        {tasks.length > 0 && (
+          <Tabs>
+            <Tab label="All">
               <TaskList
-                name="Remaining Tasks"
-                tasks={tasks.filter((task) => !task.completed)}
+                name="Tasks"
+                tasks={tasks}
                 handleTaskDelete={(id: string) => {
                   deleteTask(id)
                   refreshTasks()
@@ -66,24 +51,39 @@ export default function Home() {
                   refreshTasks()
                 }}
               />
-            </div>
-          </Tab>
-          <Tab label="Completed">
-            <TaskList
-              name="Completed Tasks"
-              tasks={tasks.filter((task) => task.completed)}
-              handleTaskDelete={(id: string) => {
-                deleteTask(id)
-                refreshTasks()
-              }}
-              handleToggleTaskCompletion={(id: string) => {
-                toggleTaskCompletion(id)
-                refreshTasks()
-              }}
-            />
-          </Tab>
-        </Tabs>
-
+            </Tab>
+            <Tab label="Remaining">
+              <div className="flex flex-col">
+                <TaskList
+                  name="Remaining Tasks"
+                  tasks={tasks.filter((task) => !task.completed)}
+                  handleTaskDelete={(id: string) => {
+                    deleteTask(id)
+                    refreshTasks()
+                  }}
+                  handleToggleTaskCompletion={(id: string) => {
+                    toggleTaskCompletion(id)
+                    refreshTasks()
+                  }}
+                />
+              </div>
+            </Tab>
+            <Tab label="Completed">
+              <TaskList
+                name="Completed Tasks"
+                tasks={tasks.filter((task) => task.completed)}
+                handleTaskDelete={(id: string) => {
+                  deleteTask(id)
+                  refreshTasks()
+                }}
+                handleToggleTaskCompletion={(id: string) => {
+                  toggleTaskCompletion(id)
+                  refreshTasks()
+                }}
+              />
+            </Tab>
+          </Tabs>
+        )}
       </div>
     </main>
   )
