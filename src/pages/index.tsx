@@ -40,7 +40,7 @@ export default function Home() {
         <Tabs>
           <Tab label="All">
             <TaskList
-              name="All Tasks"
+              name="Tasks"
               tasks={tasks}
               handleTaskDelete={(id: string) => {
                 deleteTask(id)
@@ -54,11 +54,33 @@ export default function Home() {
           </Tab>
           <Tab label="Remaining">
             <div className="flex flex-col">
-
+              <TaskList
+                name="Remaining Tasks"
+                tasks={tasks.filter((task) => !task.completed)}
+                handleTaskDelete={(id: string) => {
+                  deleteTask(id)
+                  refreshTasks()
+                }}
+                handleToggleTaskCompletion={(id: string) => {
+                  toggleTaskCompletion(id)
+                  refreshTasks()
+                }}
+              />
             </div>
           </Tab>
           <Tab label="Completed">
-
+            <TaskList
+              name="Completed Tasks"
+              tasks={tasks.filter((task) => task.completed)}
+              handleTaskDelete={(id: string) => {
+                deleteTask(id)
+                refreshTasks()
+              }}
+              handleToggleTaskCompletion={(id: string) => {
+                toggleTaskCompletion(id)
+                refreshTasks()
+              }}
+            />
           </Tab>
         </Tabs>
 
