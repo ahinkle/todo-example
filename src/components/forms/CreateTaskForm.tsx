@@ -15,7 +15,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ onSubmit }) => {
 
     onSubmit({
       task,
-      id: Math.random().toString(36).substr(2, 9),
+      id: Math.random().toString(36).substring(2, 9),
       completed: false,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
