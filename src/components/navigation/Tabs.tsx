@@ -1,6 +1,7 @@
-import { Children, useState, isValidElement } from 'react';
+import { Children, useState, isValidElement, ReactNode } from 'react';
 
 interface TabProps {
+    [x: string]: ReactNode;
     children: React.ReactNode
 }
 

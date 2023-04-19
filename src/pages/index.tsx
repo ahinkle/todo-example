@@ -4,10 +4,7 @@ import Tabs from '@/components/navigation/Tabs'
 import TaskList from '@/components/tasks/TaskList'
 import { Task } from '@/types/Task.d'
 import { createOrUpdateTask, deleteTask, retrieveTasks, toggleTaskCompletion } from '@/utils/tasks'
-import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([])
